@@ -1,7 +1,13 @@
 <template>
   <div class="navbar">
+    <!-- 顶部导航 -->
     <el-header height="50px">
-      <hamburger id="Hamburger" :is-active="opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+      <hamburger
+        id="Hamburger"
+        :is-active="opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
       <breadcrumb class="breadcrumb-container" />
       <div class="right-menu">
         <search></search>
@@ -10,7 +16,7 @@
           <el-dropdown>
             <el-badge :value="messageNum" :max="99" class="message-badge" type="danger">
               <el-button class="message">
-                <i class="el-icon-message-solid"></i>
+                <i class="ic ic-message-solid"></i>
               </el-button>
             </el-badge>
             <template #dropdown>
@@ -26,10 +32,14 @@
         </div>
         <el-button id="fullScreen" class="full-screen">
           <el-tooltip :content="langConfig.header.fullScreen[lang]" effect="dark" placement="left">
-            <i v-show="fullScreen == false" class="el-icon-full-screen" @click="toShowFullScreen()"></i>
+            <i v-show="fullScreen == false" class="ic ic-full-screen" @click="toShowFullScreen()"></i>
           </el-tooltip>
-          <el-tooltip :content="langConfig.header.exitFullScreen[lang]" effect="dark" placement="left">
-            <i v-show="fullScreen == true" class="el-icon-bottom-left" @click="toExitFullScreen()"></i>
+          <el-tooltip
+            :content="langConfig.header.exitFullScreen[lang]"
+            effect="dark"
+            placement="left"
+          >
+            <i v-show="fullScreen == true" class="ic ic-bottom-left" @click="toExitFullScreen()"></i>
           </el-tooltip>
         </el-button>
         <el-dropdown class="avatar-container" trigger="hover">
@@ -49,7 +59,10 @@
                 <el-dropdown-item>{{ langConfig.header.user.personalSetting[lang] }}</el-dropdown-item>
               </router-link>
               <el-dropdown-item divided>
-                <span style="display: block" @click="logout">{{ langConfig.header.user.logout[lang] }}</span>
+                <span
+                  style="display: block"
+                  @click="logout"
+                >{{ langConfig.header.user.logout[lang] }}</span>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -237,14 +250,6 @@ export default defineComponent({
           width: 40px;
           height: 40px;
           border-radius: 10px;
-        }
-
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
         }
       }
     }

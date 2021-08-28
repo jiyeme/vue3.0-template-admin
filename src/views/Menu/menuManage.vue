@@ -19,7 +19,7 @@
                 <el-tag v-else-if="scope.row.state === 1" size="mini" type="success">正常</el-tag>
                 <el-tag v-else size="mini" type="danger">未知</el-tag>
               </template>
-            </el-table-column> -->
+            </el-table-column>-->
             <el-table-column label="图标" align="center">
               <template #default="scope">
                 <i :class="scope.row.meta.icon"></i>
@@ -34,10 +34,24 @@
               <template #default="scope">
                 <template v-if="scope.row.state != 0">
                   <el-tooltip class="item" effect="dark" content="修改" placement="bottom">
-                    <el-button circle plain type="primary" icon="el-icon-edit" size="mini" @click="onEdit(scope.$index, scope.row)"> </el-button>
+                    <el-button
+                      circle
+                      plain
+                      type="primary"
+                      icon="el-icon-edit"
+                      size="mini"
+                      @click="onEdit(scope.$index, scope.row)"
+                    ></el-button>
                   </el-tooltip>
                   <el-tooltip class="item" effect="dark" content="删除" placement="bottom">
-                    <el-button circle plain type="danger" icon="el-icon-minus" size="mini" @click="onDelete(scope.$index, scope.row)"> </el-button>
+                    <el-button
+                      circle
+                      plain
+                      type="danger"
+                      icon="el-icon-minus"
+                      size="mini"
+                      @click="onDelete(scope.$index, scope.row)"
+                    ></el-button>
                   </el-tooltip>
                 </template>
               </template>
@@ -53,8 +67,7 @@
               background
               @current-change="onCurrentChange"
               @size-change="onSizeChange"
-            >
-            </el-pagination>
+            ></el-pagination>
           </div>
         </el-col>
       </el-row>

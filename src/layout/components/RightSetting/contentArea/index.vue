@@ -1,13 +1,34 @@
 <template>
-  <el-form ref="contentFormRef" :model="colors" label-position="left" class="content-form" label-width="100px">
+  <el-form
+    ref="contentFormRef"
+    :model="colors"
+    label-position="left"
+    class="content-form"
+    label-width="100px"
+  >
     <el-form-item :label="langConfig.form.headerArea[lang]" prop="primary">
-      <el-switch v-model="showHeader" active-color="#13ce66" inactive-color="#ff4949" @change="handleChange"> </el-switch>
+      <el-switch
+        v-model="showHeader"
+        active-color="#13ce66"
+        inactive-color="#ff4949"
+        @change="handleChange"
+      ></el-switch>
     </el-form-item>
     <el-form-item :label="langConfig.form.sidebarLogo[lang]" prop="primary">
-      <el-switch v-model="sidebarLogo" active-color="#13ce66" inactive-color="#ff4949" @change="handleSidebarLogoChange"> </el-switch>
+      <el-switch
+        v-model="sidebarLogo"
+        active-color="#13ce66"
+        inactive-color="#ff4949"
+        @change="handleSidebarLogoChange"
+      ></el-switch>
     </el-form-item>
     <el-form-item :label="langConfig.form.headerFixed[lang]" prop="primary">
-      <el-switch v-model="fixedHeader" active-color="#13ce66" inactive-color="#ff4949" @change="handleFixedChange"> </el-switch>
+      <el-switch
+        v-model="fixedHeader"
+        active-color="#13ce66"
+        inactive-color="#ff4949"
+        @change="handleFixedChange"
+      ></el-switch>
     </el-form-item>
   </el-form>
 </template>
@@ -39,9 +60,13 @@ export default defineComponent({
     const handleSidebarLogoChange = () => {
       emit('sidebarLogo')
     }
+    const colors = {
+      primary: ''
+    }
     return {
       langConfig,
       ...toRefs(state),
+      colors,
       handleChange,
       handleFixedChange,
       handleSidebarLogoChange,
@@ -51,7 +76,6 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.content-form{
-  width:100%
-}
+.content-form
+  width 100%
 </style>

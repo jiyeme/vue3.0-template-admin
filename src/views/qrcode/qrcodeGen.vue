@@ -17,7 +17,12 @@
                 <qrcode-vue :value="configForm.hostName"></qrcode-vue>
               </div>
               <div class="qrcode-config">
-                <el-form ref="configFormRef" :model="configForm" :rules="configRules" label-width="80px">
+                <el-form
+                  ref="configFormRef"
+                  :model="configForm"
+                  :rules="configRules"
+                  label-width="80px"
+                >
                   <el-form-item label="域名" prop="hostName">
                     <el-input v-model="configForm.hostName"></el-input>
                   </el-form-item>
@@ -36,7 +41,7 @@ import qrcodeVue from 'qrcode.vue'
 /* in ES 6 */
 import domtoimage from 'dom-to-image'
 import { defineComponent, ref } from 'vue'
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 import { urlToBlob } from '@/utils/transferToBlob'
 
 export default defineComponent({
@@ -107,26 +112,19 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.qrcode-container{
-     margin-top:20px;
-
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-    .qrcode-wrapper{
-        width:100%;
-        display :flex;
-        flex-direction :row;
-        justify-content :space-around;
-        align-items :center;
-        .qrcode-config{
-            width:70%;
-
-        }
-    }
-
-}
+.qrcode-container
+  margin-top 20px
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .qrcode-wrapper
+    width 100%
+    display flex
+    flex-direction row
+    justify-content space-around
+    align-items center
+    .qrcode-config
+      width 70%
 </style>

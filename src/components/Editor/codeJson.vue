@@ -76,26 +76,17 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.json-container {
-  height: 100%;
-  position: relative;
-
-  :deep {
-    .CodeMirror {
-      height: auto;
-      min-height: 300px;
-    }
-    .CodeMirror-code{
-      text-align :left;
-    }
-
-    .CodeMirror-scroll {
-      min-height: 300px;
-    }
-
-    .cm-s-rubyblue span.cm-string {
-      color: #f08047;
-    }
-  }
-}
+.json-container
+  height 100%
+  position relative
+  :deep
+    .CodeMirror
+      height auto
+      min-height 300px
+    .CodeMirror-code
+      text-align left
+    .CodeMirror-scroll
+      min-height 300px
+    .cm-s-rubyblue span.cm-string
+      color #f08047
 </style>

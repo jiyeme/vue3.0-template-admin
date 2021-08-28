@@ -2,16 +2,23 @@
   <div>
     <el-calendar>
       <template #dateCell="{ data }">
-        <p :class="data.isSelected ? 'is-selected' : ''" @dblclick="handleDoubleClick(data.day)" @click="handleFocusCurrent(data.day)">
-          {{ data.day.split('-')[2] }} {{ data.isSelected ? '✔️' : '' }}
-        </p>
+        <p
+          :class="data.isSelected ? 'is-selected' : ''"
+          @dblclick="handleDoubleClick(data.day)"
+          @click="handleFocusCurrent(data.day)"
+        >{{ data.day.split('-')[2] }} {{ data.isSelected ? '✔️' : '' }}</p>
         <ul>
           <p v-for="[key, value] of record.entries()" :key="key">
             <template v-if="key === data.day">
               <li v-for="(tasks, index) in value" :key="tasks">
-                <span style="height: auto; line-height: 0px" class="el-tag el-tag--light" data-v-53b8cb1a=""
-                  >{{ tasks.task }}<i class="el-tag__close el-icon-close" @click="handleListItem(index, value)"></i
-                ></span>
+                <span
+                  style="height: auto; line-height: 0px"
+                  class="el-tag el-tag--light"
+                  data-v-53b8cb1a
+                >
+                  {{ tasks.task }}
+                  <i class="el-tag__close el-icon-close" @click="handleListItem(index, value)"></i>
+                </span>
               </li>
             </template>
           </p>
@@ -35,7 +42,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, computed, ref, toRefs, onMounted } from 'vue'
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 
 declare type indexType = string | number | symbol
 

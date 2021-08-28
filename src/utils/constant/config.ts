@@ -82,13 +82,6 @@ export const langConfig =  {
         '/en-US': 'Reset'
       }
     },
-    home:{
-      internationTip: {
-        '/zh-CN': '切换语言可进行国际化',
-        '/en-US': 'change Lang for internationalization'
-      },
-
-    },
     breadcrumb: {
       main: {
         '/zh-CN': '首页',

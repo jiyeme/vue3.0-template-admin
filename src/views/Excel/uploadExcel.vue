@@ -17,7 +17,7 @@
                 <!-- <upload :auto-upload="false" :accept="accept" :disabled="disabled" action="https://jsonplaceholder.typicode.com/posts/" :on-filter-data="handleFileData">
                   <i class="el-icon-upload"></i>
                   <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                </upload> -->
+                </upload>-->
                 <el-upload
                   ref="uploadRef"
                   style="width: 100%"
@@ -30,7 +30,10 @@
                   :auto-upload="false"
                 >
                   <i class="el-icon-upload"></i>
-                  <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                  <div class="el-upload__text">
+                    将文件拖到此处，或
+                    <em>点击上传</em>
+                  </div>
 
                   <template #tip>
                     <div class="el-upload__tip">点击文件进行预览</div>
@@ -39,10 +42,21 @@
 
                 <div class="preview-table">
                   <el-table v-loading="loading" :data="excelData" border style="width: 100%">
-                    <el-table-column v-for="item in header" :key="item" :prop="item" :label="item" width="180"> </el-table-column>
+                    <el-table-column
+                      v-for="item in header"
+                      :key="item"
+                      :prop="item"
+                      :label="item"
+                      width="180"
+                    ></el-table-column>
                   </el-table>
                 </div>
-                <el-button style="margin-left: 10px" size="small" type="success" @click="handleSubmitUpload">确认上传</el-button>
+                <el-button
+                  style="margin-left: 10px"
+                  size="small"
+                  type="success"
+                  @click="handleSubmitUpload"
+                >确认上传</el-button>
               </div>
             </el-card>
           </div>
@@ -53,7 +67,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from 'vue'
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 import { useReadRawData } from './useReadExcel'
 // import upload from './components/upload.vue'
 
@@ -114,27 +128,21 @@ export default defineComponent({
 </script>
 
 <style lang="stylus" scoped>
-.upload-container{
-     margin-top:20px;
-
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-    .section{
-      display:flex;
-      flex-direction:column;
-      justify-content: flex-start;
-      align-items :center;
-      .preview-table{
-        width:100%;
-        margin-top:10px;
-      }
-    }
-     .el-row {
-       margin-bottom: 20px;
-     }
-}
+.upload-container
+  margin-top 20px
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .section
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items center
+    .preview-table
+      width 100%
+      margin-top 10px
+  .el-row
+    margin-bottom 20px
 </style>

@@ -2,12 +2,15 @@
   <div class="zip-container">
     <div class="info">
       <el-divider content-position="left">导出压缩文件Zip</el-divider>
-      <span style="text-align: left"
-        ><span class="title">导出压缩文件场景：</span>通常用于选择某些文件，并将其压缩导出的场景，比如蓝湖批量导出压缩图片文件等<el-link
-          type="primary"
-          href="https://stuk.github.io/jszip/documentation/examples.html"
-          >JSZip <el-tooltip class="item" effect="dark" :content="contentTip" placement="top-start"> <i class="el-icon-question"></i></el-tooltip> </el-link
-      ></span>
+      <span style="text-align: left">
+        <span class="title">导出压缩文件场景：</span>通常用于选择某些文件，并将其压缩导出的场景，比如蓝湖批量导出压缩图片文件等
+        <el-link type="primary" href="https://stuk.github.io/jszip/documentation/examples.html">
+          JSZip
+          <el-tooltip class="item" effect="dark" :content="contentTip" placement="top-start">
+            <i class="el-icon-question"></i>
+          </el-tooltip>
+        </el-link>
+      </span>
     </div>
 
     <el-row>
@@ -16,11 +19,35 @@
           <el-card class="box-card">
             <div style="text-align: left">
               <span style="margin-right: 20px">下载生成编辑文件zip场景</span>
-              <el-button id="blob" size="medium" type="success" plain @click="handleDownloadFile('FileSaver')"
-                >下载 Zip (FileSaver API) <el-tooltip class="item" effect="dark" :content="downloadTip" placement="bottom-start"> <i class="el-icon-question"></i></el-tooltip>
+              <el-button
+                id="blob"
+                size="medium"
+                type="success"
+                plain
+                @click="handleDownloadFile('FileSaver')"
+              >
+                下载 Zip (FileSaver API)
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="downloadTip"
+                  placement="bottom-start"
+                >
+                  <i class="el-icon-question"></i>
+                </el-tooltip>
               </el-button>
-              <el-input v-model="zipFileName" placeholder="请输入zip压缩文件名" style="width: 200px; margin-left: 10px" clearable> </el-input>
-              <el-input v-model="fileName" placeholder="请输入编辑文件名" style="width: 200px; margin-left: 10px" clearable> </el-input>
+              <el-input
+                v-model="zipFileName"
+                placeholder="请输入zip压缩文件名"
+                style="width: 200px; margin-left: 10px"
+                clearable
+              ></el-input>
+              <el-input
+                v-model="fileName"
+                placeholder="请输入编辑文件名"
+                style="width: 200px; margin-left: 10px"
+                clearable
+              ></el-input>
 
               <el-divider></el-divider>
             </div>
@@ -38,20 +65,46 @@
           <el-card class="box-card">
             <div style="text-align: left">
               <span style="margin-right: 20px">下载压缩已上传文件的zip场景</span>
-              <el-button id="blob" size="medium" type="success" plain @click="handleDownloadSelectFile()"
-                >下载 Zip (FileSaver API) <el-tooltip class="item" effect="dark" :content="downloadTip" placement="bottom-start"> <i class="el-icon-question"></i></el-tooltip>
+              <el-button
+                id="blob"
+                size="medium"
+                type="success"
+                plain
+                @click="handleDownloadSelectFile()"
+              >
+                下载 Zip (FileSaver API)
+                <el-tooltip
+                  class="item"
+                  effect="dark"
+                  :content="downloadTip"
+                  placement="bottom-start"
+                >
+                  <i class="el-icon-question"></i>
+                </el-tooltip>
               </el-button>
-              <el-progress style="width: 40%; margin: 10px" :text-inside="true" :stroke-width="20" :percentage="percentage" status="success"></el-progress>
+              <el-progress
+                style="width: 40%; margin: 10px"
+                :text-inside="true"
+                :stroke-width="20"
+                :percentage="percentage"
+                status="success"
+              ></el-progress>
               <el-divider></el-divider>
             </div>
             <div class="section">
-              <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-                <el-table-column type="selection" width="55"> </el-table-column>
+              <el-table
+                ref="multipleTable"
+                :data="tableData"
+                tooltip-effect="dark"
+                style="width: 100%"
+                @selection-change="handleSelectionChange"
+              >
+                <el-table-column type="selection" width="55"></el-table-column>
                 <el-table-column prop="fileName" label="文件名称">
                   <template #default="scope">{{ scope.row.fileName }}</template>
                 </el-table-column>
-                <el-table-column prop="uploadTime" label="上传时间"> </el-table-column>
-                <el-table-column prop="uploadUser" label="上传人" show-overflow-tooltip> </el-table-column>
+                <el-table-column prop="uploadTime" label="上传时间"></el-table-column>
+                <el-table-column prop="uploadUser" label="上传人" show-overflow-tooltip></el-table-column>
               </el-table>
             </div>
           </el-card>
@@ -231,26 +284,19 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.zip-container{
-
-    .info{
-      .title{
-        font-size:14px;
-      }
-    text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-      .section{
-      display:flex;
-      flex-direction:row;
-      justify-content: flex-start;
-      align-items :center;
-    }
-     .el-row {
-       margin-bottom: 20px;
-     }
-
-}
+.zip-container
+  .info
+    .title
+      font-size 14px
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .section
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+  .el-row
+    margin-bottom 20px
 </style>

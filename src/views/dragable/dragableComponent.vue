@@ -2,7 +2,10 @@
   <div class="dragable-container">
     <div class="info">
       <el-divider content-position="left">拖拽组件</el-divider>
-      <span style="text-align: left">拖拽组件常用于对当前活动列表进行优先级重新排列场景。<el-link type="primary" href="http://www.sortablejs.com/index.html">sortableJs</el-link></span>
+      <span style="text-align: left">
+        拖拽组件常用于对当前活动列表进行优先级重新排列场景。
+        <el-link type="primary" href="http://www.sortablejs.com/index.html">sortableJs</el-link>
+      </span>
     </div>
     <div>
       <el-row>
@@ -55,6 +58,7 @@ export default defineComponent({
     ])
 
     onMounted(() => {
+      console.log('dragable', itemsRef.value)
       listSortable = Sortable.create(itemsRef.value)
     })
 
@@ -71,40 +75,30 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.dragable-container{
-   margin-top:20px;
-
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-    .section{
-      display:flex;
-      flex-direction:row;
-      justify-content: flex-start;
-      align-items :center;
-    }
-
-     .el-row {
-       margin-bottom: 20px;
-     }
-     .box{
-        background-color: var(--color-bg-primary);
-        border: 1px solid var(--color-border-primary);
-        border-radius: 6px;
-        padding: 16px!important;
-        display: flex!important;
-        .item-list-content{
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-        }
-     }
-     .box-card{
-         margin-bottom :10px;
-     }
-
-}
+.dragable-container
+  margin-top 20px
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .section
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+  .el-row
+    margin-bottom 20px
+  .box
+    background-color var(--color-bg-primary)
+    border 1px solid var(--color-border-primary)
+    border-radius 6px
+    padding 16px !important
+    display flex !important
+    .item-list-content
+      display flex
+      width 100%
+      flex-direction column
+  .box-card
+    margin-bottom 10px
 </style>

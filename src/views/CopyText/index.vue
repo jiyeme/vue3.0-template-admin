@@ -14,8 +14,20 @@
                 <el-divider></el-divider>
               </div>
               <div class="section">
-                <el-input id="textarea" v-model="inputContent" style="width: 70%; margin: 0px 20px" type="textarea" :rows="2" placeholder="请输入内容"> </el-input>
-                <el-button size="medium" type="success" plain @click="handleCopyInput(inputContent, $event)">复制</el-button>
+                <el-input
+                  id="textarea"
+                  v-model="inputContent"
+                  style="width: 70%; margin: 0px 20px"
+                  type="textarea"
+                  :rows="2"
+                  placeholder="请输入内容"
+                ></el-input>
+                <el-button
+                  size="medium"
+                  type="success"
+                  plain
+                  @click="handleCopyInput(inputContent, $event)"
+                >复制</el-button>
                 <!--clipboard bug-->
                 <!-- <el-button v-clip:cut="inputContent" class="cut-btn" size="medium" type="warning" plain>剪切</el-button> -->
                 <!-- <el-button class="cut-btn" size="medium" type="warning" plain data-clipboard-action="cut" data-clipboard-target="#textarea">剪切</el-button> -->
@@ -69,16 +81,32 @@
                 </el-table-column>
                 <el-table-column label="操作" width="200">
                   <template #default="scope">
-                    <el-button v-if="scope.row.edit" size="medium" type="success" plain icon="el-icon-check" @click="handleSave(scope.$index, scope.row)">保存</el-button>
+                    <el-button
+                      v-if="scope.row.edit"
+                      size="medium"
+                      type="success"
+                      plain
+                      icon="el-icon-check"
+                      @click="handleSave(scope.$index, scope.row)"
+                    >保存</el-button>
 
-                    <el-button v-else v-clip:copy="`姓名:${scope.row.name},详细地址:${scope.row.address}`" size="medium" type="info" icon="el-icon-copy" plain>复制</el-button>
+                    <el-button
+                      v-else
+                      v-clip:copy="`姓名:${scope.row.name},详细地址:${scope.row.address}`"
+                      size="medium"
+                      type="info"
+                      icon="el-icon-copy"
+                      plain
+                    >复制</el-button>
                   </template>
                 </el-table-column>
               </el-table>
-              <div style="margin: 5px"><el-button @click="handleAddRecord">+ 新增记录</el-button></div>
+              <div style="margin: 5px">
+                <el-button @click="handleAddRecord">+ 新增记录</el-button>
+              </div>
             </el-card>
-          </div></el-col
-        >
+          </div>
+        </el-col>
       </el-row>
     </div>
   </div>
@@ -86,7 +114,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted, reactive, toRefs } from 'vue'
 import ClipboardJS from 'clipboard'
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 import clipboard from '@/utils/clipboard' // use clipboard directly
 import clip from '@/directive/clipboard/clipboard'
 
@@ -208,23 +236,18 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.copy-container{
-   margin-top:20px;
-
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-    .section{
-      display:flex;
-      flex-direction:row;
-      justify-content: flex-start;
-      align-items :center;
-    }
-     .el-row {
-       margin-bottom: 20px;
-     }
-}
+.copy-container
+  margin-top 20px
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .section
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+  .el-row
+    margin-bottom 20px
 </style>

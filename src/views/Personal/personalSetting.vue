@@ -6,7 +6,9 @@
           <el-card class="box-card">
             <template #header>
               <div class="card-header">
-                <el-button class="button" type="text" @click="handleBack"><i class="el-icon-arrow-left" />返回</el-button>
+                <el-button class="button" type="text" @click="handleBack">
+                  <i class="el-icon-arrow-left" />返回
+                </el-button>
 
                 <span>个人设置</span>
                 <div></div>
@@ -19,7 +21,13 @@
                 </div>
                 <div class="set-info">
                   <div class="form-info">
-                    <el-form ref="settingFormRef" :model="settingForm" :rules="rules" label-width="100px" class="demo-ruleForm">
+                    <el-form
+                      ref="settingFormRef"
+                      :model="settingForm"
+                      :rules="rules"
+                      label-width="100px"
+                      class="demo-ruleForm"
+                    >
                       <el-form-item label="邮箱" prop="email">
                         <el-input v-model="settingForm.email" placeholder="请输入邮箱"></el-input>
                       </el-form-item>
@@ -27,7 +35,12 @@
                         <el-input v-model="settingForm.nickname" placeholder="请输入昵称" maxlength="10"></el-input>
                       </el-form-item>
                       <el-form-item label="个人简介" prop="desc">
-                        <el-input v-model="settingForm.desc" type="textarea" placeholder="个人简介" maxlength="120"></el-input>
+                        <el-input
+                          v-model="settingForm.desc"
+                          type="textarea"
+                          placeholder="个人简介"
+                          maxlength="120"
+                        ></el-input>
                       </el-form-item>
 
                       <el-form-item label="联系电话" prop="mobile">
@@ -35,7 +48,11 @@
                       </el-form-item>
 
                       <el-form-item>
-                        <el-button type="primary" :loading="updateLoading" @click="submitForm()">更新基本信息</el-button>
+                        <el-button
+                          type="primary"
+                          :loading="updateLoading"
+                          @click="submitForm()"
+                        >更新基本信息</el-button>
                         <el-button @click="resetForm()">重置</el-button>
                       </el-form-item>
                     </el-form>
@@ -52,7 +69,9 @@
                       :on-success="handleAvatarSuccess"
                       :before-upload="beforeAvatarUpload"
                     >
-                      <el-button style="margin-left: 10px" size="small" type="success"><i class="el-icon-upload"></i>更换头像</el-button>
+                      <el-button style="margin-left: 10px" size="small" type="success">
+                        <i class="el-icon-upload"></i>更换头像
+                      </el-button>
                     </el-upload>
                   </div>
                 </div>
@@ -66,21 +85,27 @@
                     <span class="secure-key">账户密码</span>
                     <span class="secure-value">当前密码强度：强</span>
                   </div>
-                  <div class="opera-btn"><span>修改</span></div>
+                  <div class="opera-btn">
+                    <span>修改</span>
+                  </div>
                 </div>
                 <div class="secure-item">
                   <div class="secure-info">
                     <span class="secure-key">密保手机</span>
                     <span class="secure-value">已绑定手机：138****2234</span>
                   </div>
-                  <div class="opera-btn"><span>修改</span></div>
+                  <div class="opera-btn">
+                    <span>修改</span>
+                  </div>
                 </div>
                 <div class="secure-item">
                   <div class="secure-info">
                     <span class="secure-key">绑定邮箱</span>
                     <span class="secure-value">已绑定邮箱：geek****@outlook.com</span>
                   </div>
-                  <div class="opera-btn"><span>修改</span></div>
+                  <div class="opera-btn">
+                    <span>修改</span>
+                  </div>
                 </div>
               </el-tab-pane>
               <el-tab-pane label="新消息通知">
@@ -93,7 +118,13 @@
                     <span class="secure-value">用户信息将以系统内部渠道通知</span>
                   </div>
                   <el-tooltip :content="'是否开启用户信息: '" placement="top">
-                    <el-switch v-model="userSwitch" active-color="#13ce66" inactive-color="#ff4949" :active-value="true" :inactive-value="false"> </el-switch>
+                    <el-switch
+                      v-model="userSwitch"
+                      active-color="#13ce66"
+                      inactive-color="#ff4949"
+                      :active-value="true"
+                      :inactive-value="false"
+                    ></el-switch>
                   </el-tooltip>
                 </div>
                 <div class="secure-item">
@@ -102,7 +133,13 @@
                     <span class="secure-value">系统消息将以系统内部渠道通知</span>
                   </div>
                   <el-tooltip :content="'是否开启系统消息: '" placement="top">
-                    <el-switch v-model="sysSwitch" active-color="#13ce66" inactive-color="#ff4949" :active-value="true" :inactive-value="false"> </el-switch>
+                    <el-switch
+                      v-model="sysSwitch"
+                      active-color="#13ce66"
+                      inactive-color="#ff4949"
+                      :active-value="true"
+                      :inactive-value="false"
+                    ></el-switch>
                   </el-tooltip>
                 </div>
                 <div class="secure-item">
@@ -111,18 +148,25 @@
                     <span class="secure-value">代办任务将以系统内部渠道通知</span>
                   </div>
                   <el-tooltip :content="'是否开启代办任务消息: '" placement="top">
-                    <el-switch v-model="taskSwitch" active-color="#13ce66" inactive-color="#ff4949" :active-value="true" :inactive-value="false"> </el-switch>
+                    <el-switch
+                      v-model="taskSwitch"
+                      active-color="#13ce66"
+                      inactive-color="#ff4949"
+                      :active-value="true"
+                      :inactive-value="false"
+                    ></el-switch>
                   </el-tooltip>
                 </div>
               </el-tab-pane>
             </el-tabs>
-          </el-card></div
-      ></el-col>
+          </el-card>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
 <script lang="ts">
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 import { defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import Service from './api/index'
@@ -244,112 +288,84 @@ export default defineComponent({
 </script>
 
 <style lang="stylus" scoped>
-.PersonalSetting{
-    margin-top:20px;
-    .demo-ruleForm{
-        text-align :left;
-    }
-    .set-title{
-      text-align :left;
-    }
-    .secure-item{
-      width:100%;
-      padding:20px;
-      border-bottom:1px solid #f0f0f0;
-      display :flex;
-      flex-direction:row;
-      justify-content :space-between;
-      align-items :center;
-      .secure-info{
-         display :flex;
-      flex-direction:column;
-      justify-content :flex-start;
-      align-items :flex-start;
-        .secure-key{
-          margin-bottom: 4px;
-          color: rgba(0,0,0,.85);
-          font-size: 14px;
-          line-height: 1.6;
-        }
-        .secure-value{
-          color: rgba(0,0,0,.45);
-          font-size: 14px;
-          line-height: 1.6;
-        }
-      }
-      .opera-btn{
-        color:#1890ff;
-        cursor:pointer;
-
-      }
-    }
-    .set-info{
-      display :flex;
-      flex-direction :row;
-      justify-content :space-around;
-      align-items :flex-start;
-      .form-info{
-
-
-      }
-      .avatar{
-        display :flex;
-        flex-direction:row;
-        justify-content:flex-start;
-        align-items :flex-end;
-        .preview{
-           display :flex;
-        flex-direction:column;
-        justify-content:flex-start;
-        align-items :flex-start;
-        margin-right:20px;
-         img{
-            width:174px;
-          height:174px;
-          border-radius:50%;
-         }
-        }
-
-          .avatar-uploader .el-upload:hover {
-            border-color: #409EFF;
-          }
-          .avatar-uploader-icon {
-            font-size: 28px;
-            color: #8c939d;
-            width: 178px;
-            height: 178px;
-            line-height: 178px;
-            text-align: center;
-          }
-          .avatar {
-            width: 178px;
-            height: 178px;
-            display: block;
-          }
-      }
-    }
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-     .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
-  }
-
-  .box-card {
-    width:100%;
-  }
-}
+.PersonalSetting
+  margin-top 20px
+  .demo-ruleForm
+    text-align left
+  .set-title
+    text-align left
+  .secure-item
+    width 100%
+    padding 20px
+    border-bottom 1px solid #f0f0f0
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    .secure-info
+      display flex
+      flex-direction column
+      justify-content flex-start
+      align-items flex-start
+      .secure-key
+        margin-bottom 4px
+        color rgba(0, 0, 0, 0.85)
+        font-size 14px
+        line-height 1.6
+      .secure-value
+        color rgba(0, 0, 0, 0.45)
+        font-size 14px
+        line-height 1.6
+    .opera-btn
+      color #1890ff
+      cursor pointer
+  .set-info
+    display flex
+    flex-direction row
+    justify-content space-around
+    align-items flex-start
+    .form-info
+    .avatar
+      display flex
+      flex-direction row
+      justify-content flex-start
+      align-items flex-end
+      .preview
+        display flex
+        flex-direction column
+        justify-content flex-start
+        align-items flex-start
+        margin-right 20px
+        img
+          width 174px
+          height 174px
+          border-radius 50%
+      .avatar-uploader .el-upload:hover
+        border-color #409EFF
+      .avatar-uploader-icon
+        font-size 28px
+        color #8c939d
+        width 178px
+        height 178px
+        line-height 178px
+        text-align center
+      .avatar
+        width 178px
+        height 178px
+        display block
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .card-header
+    display flex
+    justify-content space-between
+    align-items center
+  .text
+    font-size 14px
+  .item
+    margin-bottom 18px
+  .box-card
+    width 100%
 </style>

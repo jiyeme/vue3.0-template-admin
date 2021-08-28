@@ -42,16 +42,21 @@ export default defineConfig({
     hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
 
     // 服务配置
-    port: 4399,    // 类型： number 指定服务器端口;
-    open: true,   // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
+    port: 8081,    // 类型： number 指定服务器端口;
+    open: false,   // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
     cors: true,  // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
     proxy: {    // 类型： Record<string, string | ProxyOp 为开发服务器配置自定义代理规则
       '/api': {
-        target: 'http://106.12.45.247:3000/',
+        target: 'http://127.0.0.1:8080/',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace('/api', '')
-      }
+      },
+      '/upload':{
+        target: 'http://127.0.0.1:8080',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
    // https://www.vitejs.net/config/#build-commonjsoptions
@@ -59,7 +64,7 @@ export default defineConfig({
     commonjsOptions:{
       ignoreDynamicRequires:false, // Default: false
       transformMixedEsModules:true,
-      brotliSize:false, // 禁用会提高大型项目的构建性能。
+      // brotliSize:false, // 禁用会提高大型项目的构建性能。
       sourceMap:false
     }
   },

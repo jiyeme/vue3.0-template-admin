@@ -1,10 +1,23 @@
 <template>
   <div id="Serach" class="search-container">
-    <el-select v-model="value" :remote-method="querySearch" filterable default-first-option remote placeholder="请输入关键字搜索" @change="handleChange">
+    <el-select
+      v-model="value"
+      :remote-method="querySearch"
+      filterable
+      default-first-option
+      remote
+      placeholder="请输入关键字搜索"
+      @change="handleChange"
+    >
       <template #prefix>
         <i class="el-input__icon el-icon-search"></i>
       </template>
-      <el-option v-for="{ item } in options" :key="item.path" :value="item" :label="item.title.join(' > ')"> </el-option>
+      <el-option
+        v-for="{ item } in options"
+        :key="item.path"
+        :value="item"
+        :label="item.title.join(' > ')"
+      ></el-option>
     </el-select>
   </div>
 </template>
@@ -109,16 +122,16 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="stylus" scoped>
-.search-container{
-    :deep .el-input__inner {
-      border-radius: 0;
-      border: 0;
-      padding-left: 0;
-      padding-right: 0;
-      box-shadow: none !important;
-      border-bottom: 1px solid #d9d9d9;
-      vertical-align: middle;
-    }
+<style lang="scss" scoped>
+.search-container {
+  :deep .el-input__inner {
+    border-radius: 0;
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    box-shadow: none !important;
+    border-bottom: 1px solid #d9d9d9;
+    vertical-align: middle;
+  }
 }
 </style>

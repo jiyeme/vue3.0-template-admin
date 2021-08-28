@@ -1,7 +1,10 @@
 <template>
   <div>
-    <el-alert title="Tips:点击【新增】按钮进行新增角色；点击【编辑】按钮，进行不同角色的菜单授权操作！" type="warning"> </el-alert>
-    <el-alert title="Tips:权限控制体验：【管理员账号为：admin@outlook.com】、【超级管理员账号为：super@outlook.com】" type="info"> </el-alert>
+    <el-alert title="Tips:点击【新增】按钮进行新增角色；点击【编辑】按钮，进行不同角色的菜单授权操作！" type="warning"></el-alert>
+    <el-alert
+      title="Tips:权限控制体验：【管理员账号为：admin@outlook.com】、【超级管理员账号为：super@outlook.com】"
+      type="info"
+    ></el-alert>
     <el-card class="card-ctrl">
       <el-row>
         <el-col :span="8" style="text-align: left">
@@ -14,7 +17,9 @@
         <el-table-column prop="roleName" label="角色名称" align="center"></el-table-column>
         <el-table-column prop="state" label="角色状态" align="center">
           <template #default="scope">
-            <el-tag v-if="scope.row.state === 0" size="mini" type="info"><i class="ic ic-lock"></i> 锁定</el-tag>
+            <el-tag v-if="scope.row.state === 0" size="mini" type="info">
+              <i class="ic ic-lock"></i> 锁定
+            </el-tag>
             <el-tag v-else-if="scope.row.state === 1" size="mini" type="success">正常</el-tag>
             <el-tag v-else size="mini" type="danger">未知</el-tag>
           </template>
@@ -24,10 +29,25 @@
         <el-table-column label="操作" align="center">
           <template #default="scope">
             <el-tooltip class="item" effect="dark" content="菜单授权" placement="bottom">
-              <el-button circle plain type="primary" icon="el-icon-edit" size="small" @click="onEdit(scope.$index, scope.row)"></el-button>
+              <el-button
+                circle
+                plain
+                type="primary"
+                icon="el-icon-edit"
+                size="small"
+                @click="onEdit(scope.$index, scope.row)"
+              ></el-button>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="删除" placement="bottom">
-              <el-button v-if="scope.row.state != 0" circle plain type="danger" icon="el-icon-minus" size="small" @click="onDelete(scope.$index, scope.row)"> </el-button>
+              <el-button
+                v-if="scope.row.state != 0"
+                circle
+                plain
+                type="danger"
+                icon="el-icon-minus"
+                size="small"
+                @click="onDelete(scope.$index, scope.row)"
+              ></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -42,8 +62,7 @@
           background
           @current-change="onCurrentChange"
           @size-change="onSizeChange"
-        >
-        </el-pagination>
+        ></el-pagination>
       </div>
     </el-card>
 
@@ -57,7 +76,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed } from 'vue'
-import { ElMessage, ElMessageBox} from 'element-plus/lib/components'
+import { ElMessage, ElMessageBox } from 'element-plus/lib/components'
 import RoleEdit from './rolesEdit.vue'
 import RoleNew from './rolesNew.vue'
 

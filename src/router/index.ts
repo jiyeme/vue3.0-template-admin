@@ -15,7 +15,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         '/zh-CN': '首页',
         '/en-US': 'Home Page'
       },
-      icon: 'el-icon-s-home',
+      icon: 'ic ic-home',
     },
     children: [
       {
@@ -27,7 +27,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
             '/zh-CN': '首页',
             '/en-US': 'Home Page'
           },
-          icon: 'home',
+          icon: '',
         },
       },
     ],
@@ -69,8 +69,72 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   }, },
 ];
 
-// 异步路由
+// 异步路由   受请求 /api/auth/permission/routes 控制
 export const asyncRoutes:Array<RouteRecordRaw> = [
+  {
+    path: '/mini',
+    component: layout,
+    redirect: '/mini/index',
+    meta: {
+      title: {
+        '/zh-CN': '小程序配置',
+        '/en-US': 'Mini Config'
+      },
+      icon: 'ic ic-setting'
+    },
+    children: [
+      {
+        path: '/mini/index',
+        name: 'mini',
+        component: () => import('@/views/Mini/homeIndex.vue'),
+        meta:{
+          title: {
+            '/zh-CN': '首页配置',
+            '/en-US': 'Home Config'
+          },
+          icon: ''
+        }
+      }
+    ]
+  },
+  {
+    path: '/media',
+    component: layout,
+    redirect: '/media/list',
+    meta: {
+      title:{
+        '/zh-CN': '媒体',
+        '/en-US': 'Media'
+      },
+      icon: 'ic ic-picture-outline',
+    },
+    children: [
+      {
+        path: '/media/new',
+        name: 'mediaNew',
+        component: () => import('@/views/Media/new.vue'),
+        meta: {
+          title:{
+            '/zh-CN': '上传',
+            '/en-US': 'Upload'
+          },
+          icon: 'ic ic-guide',
+        },
+      },
+      {
+        path: '/media/list',
+        name: 'mediaList',
+        component: () => import('@/views/Media/list.vue'),
+        meta: {
+          title:{
+            '/zh-CN': '媒体库',
+            '/en-US': 'Media'
+          },
+          icon: 'ic ic-guide',
+        },
+      }
+    ],
+  },
   {
     path: '/guide',
     component: layout,
@@ -80,7 +144,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '引导页',
         '/en-US': 'Guide Page'
       },
-      icon: 'el-icon-guide',
+      icon: 'ic ic-guide',
     },
     children: [
       {
@@ -92,7 +156,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '引导',
             '/en-US': 'Guide'
           },
-          icon: 'el-icon-guide',
+          icon: 'ic ic-guide',
         },
       }
     ],
@@ -106,7 +170,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '仪表盘',
         '/en-US': 'Dashboard'
       },
-      icon: 'el-icon-data-analysis',
+      icon: 'ic ic-data-analysis',
     },
     children: [
       {
@@ -144,7 +208,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '复制文本',
         '/en-US': 'Copy Text'
       },
-      icon: 'el-icon-edit-outline',
+      icon: 'ic ic-edit-outline',
     },
     children: [
       {
@@ -170,7 +234,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': 'Excel',
         '/en-US': 'Excel'
       },
-      icon: 'el-icon-edit-outline',
+      icon: 'ic ic-edit-outline',
     },
     children: [
       {
@@ -208,7 +272,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': 'Zip',
         '/en-US': 'Zip'
       },
-      icon: 'el-icon-folder',
+      icon: 'ic ic-folder',
     },
     children: [
       {
@@ -220,7 +284,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '导出zip',
             '/en-US': 'Export Zip'
           },
-          icon: 'el-icon-folder',
+          icon: 'ic ic-folder',
         },
       },
     ],
@@ -234,7 +298,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '列表页',
         '/en-US': 'Table Page'
       },
-      icon: 'el-icon-folder-opened',
+      icon: 'ic ic-folder-opened',
     },
     children: [
       {
@@ -246,7 +310,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '表格',
             '/en-US': 'Table'
           },
-          icon: 'el-icon-folder-opened',
+          icon: 'ic ic-folder-opened',
 
         },
       },
@@ -262,7 +326,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '表单页',
         '/en-US': 'Form Page'
       },
-      icon: 'el-icon-s-grid',
+      icon: 'ic ic-s-grid',
     },
     children: [
       {
@@ -274,7 +338,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '基础表单',
             '/en-US': 'Basic Form'
           },
-          icon: 'el-icon-s-grid',
+          icon: 'ic ic-s-grid',
 
         },
       },
@@ -287,7 +351,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '分步表单',
             '/en-US': 'Step Form'
           },
-          icon: 'el-icon-s-grid',
+          icon: 'ic ic-s-grid',
 
         },
       },
@@ -300,7 +364,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '高级表单',
             '/en-US': 'Advance Form'
           },
-          icon: 'el-icon-s-grid',
+          icon: 'ic ic-s-grid',
 
         },
       },
@@ -315,7 +379,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '二维码',
         '/en-US': 'QRCode'
       },
-      icon: 'el-icon-c-scale-to-original',
+      icon: 'ic ic-c-scale-to-original',
     },
     children: [
       {
@@ -327,7 +391,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '二维码',
             '/en-US': 'QRCode'
           },
-          icon: 'el-icon-c-scale-to-original',
+          icon: 'ic ic-c-scale-to-original',
         },
       }
     ],
@@ -341,7 +405,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '拖拽组件',
         '/en-US': 'Dragable Component'
       },
-      icon: 'el-icon-s-promotion',
+      icon: 'ic ic-s-promotion',
     },
     children: [
       {
@@ -353,7 +417,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '拖拽组件',
             '/en-US': 'Dragable Component'
           },
-          icon: 'el-icon-s-promotion',
+          icon: 'ic ic-s-promotion',
         },
       }
     ],
@@ -367,7 +431,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '编辑器组件',
         '/en-US': 'Editor Component'
       },
-      icon: 'el-icon-edit',
+      icon: 'ic ic-edit',
     },
     children: [
       {
@@ -379,7 +443,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': 'Markdown编辑器',
             '/en-US': 'Markdown Editor'
           },
-          icon: 'el-icon-edit',
+          icon: 'ic ic-edit',
         },
       },
       {
@@ -391,7 +455,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '富文本编辑器',
             '/en-US': 'Rich Editor'
           },
-          icon: 'el-icon-edit',
+          icon: 'ic ic-edit',
         },
       },
       {
@@ -403,7 +467,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': 'Json 编辑器',
             '/en-US': 'Json Editor'
           },
-          icon: 'el-icon-edit',
+          icon: 'ic ic-edit',
         },
       }
     ],
@@ -414,7 +478,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
   //   redirect: '/permission/permission',
   //   meta: {
   //     title: '权限',
-  //     icon: 'el-icon-c-scale-to-original',
+  //     icon: 'ic ic-c-scale-to-original',
   //   },
   //   children: [
   //     {
@@ -423,7 +487,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
   //       component: () => import(/* webpackChunkName: "personalCenter" */ '@/views/permission/permission.vue'),
   //       meta: {
   //         title: '权限',
-  //         icon: 'el-icon-c-scale-to-original',
+  //         icon: 'ic ic-c-scale-to-original',
   //       },
   //     }
   //   ],
@@ -438,7 +502,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '文件上传',
         '/en-US': 'File Upload'
       },
-      icon: 'el-icon-upload',
+      icon: 'ic ic-upload',
     },
     children: [
       {
@@ -464,7 +528,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '图片裁剪',
         '/en-US': 'Crop Image'
       },
-      icon: 'ic ic-tailor',
+      icon: 'ic ic-scissors',
     },
     children: [
       {
@@ -490,7 +554,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '菜单管理',
         '/en-US': 'Menu Manage'
       },
-      icon: 'ic ic-other',
+      icon: 'ic ic-menu',
     },
     children: [
       {
@@ -516,7 +580,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '角色管理',
         '/en-US': 'Role Manage'
       },
-      icon: 'ic ic-other',
+      icon: 'ic ic-user',
     },
     children: [
       {
@@ -542,7 +606,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
         '/zh-CN': '个人页',
         '/en-US': 'Personal Page'
       },
-      icon: 'el-icon-user-solid',
+      icon: 'ic ic-user-solid',
     },
     children: [
       {
@@ -554,7 +618,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '个人中心',
             '/en-US': 'PersonalCenter'
           },
-          icon: 'el-icon-user-solid',
+          icon: 'ic ic-user-solid',
 
         },
       },
@@ -567,7 +631,7 @@ export const asyncRoutes:Array<RouteRecordRaw> = [
             '/zh-CN': '个人设置',
             '/en-US': 'PersonalSetting'
           },
-          icon: 'el-icon-user-solid',
+          icon: 'ic ic-user-solid',
 
         },
       },

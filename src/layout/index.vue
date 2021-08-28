@@ -23,7 +23,11 @@
         </div>
         <div class="setting-item">
           <div class="setting-draw-title">内容区域</div>
-          <content-area @change="handleHeaderChange" @fixedHeader="handleFixedHeaderChange" @sidebarLogo="handleSidebarLogoChange"></content-area>
+          <content-area
+            @change="handleHeaderChange"
+            @fixedHeader="handleFixedHeaderChange"
+            @sidebarLogo="handleSidebarLogoChange"
+          ></content-area>
           <div class="divider"></div>
         </div>
       </RightDrawer>
@@ -69,7 +73,7 @@ export default defineComponent({
     const hideHeader = computed(() => store.getters['settingsModule/getHideHeaderState'])
     const fixedHeader = computed(() => store.getters['settingsModule/getFixedHeaderState'])
 
-    const device = computed(() => store.getters['appModule/getDeviceState'])
+    const device = computed(() => store.getters['appModule/getDeviceState'] || 'desktop')
     const withoutAnimation = computed(() => store.getters['appModule/getSidebarAnimation'])
     const originalStylesheetCount = computed(() => document.styleSheets.length || -1)
     const classObj = computed(() => ({
@@ -122,6 +126,7 @@ export default defineComponent({
     getIndexStyle().then((data: any) => {
       originalStyle.value = getStyleTemplate(data)
     })
+
     return {
       opened,
       device,
@@ -136,6 +141,10 @@ export default defineComponent({
       showSetting,
       ...toRefs(colors)
     }
+  },
+
+  activated() {
+    console.log('activated layout/index.vue')
   }
 })
 </script>

@@ -10,6 +10,7 @@ import RootStateTypes, { AllStateTypes } from './types';
 
 const defaultState = {
   count: 0,
+  token: null
 };
 // 新建store 实例
 export const store = createStore({

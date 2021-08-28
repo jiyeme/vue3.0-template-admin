@@ -10,7 +10,9 @@
           <el-card class="box-card">
             <template #header>
               <div class="card-header">
-                <el-button class="button" type="text" @click="handleBack"><i class="el-icon-arrow-left" />返回</el-button>
+                <el-button class="button" type="text" @click="handleBack">
+                  <i class="el-icon-arrow-left" />返回
+                </el-button>
 
                 <span>表单信息</span>
                 <div></div>
@@ -57,9 +59,20 @@
               </el-table-column>
               <el-table-column label="操作" width="200">
                 <template #default="scope">
-                  <el-button v-if="scope.row.edit" size="mini" type="success" icon="el-icon-check" @click="handleSave(scope.$index, scope.row)">保存</el-button>
+                  <el-button
+                    v-if="scope.row.edit"
+                    size="mini"
+                    type="success"
+                    icon="el-icon-check"
+                    @click="handleSave(scope.$index, scope.row)"
+                  >保存</el-button>
 
-                  <el-button v-else size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                  <el-button
+                    v-else
+                    size="mini"
+                    icon="el-icon-edit"
+                    @click="handleEdit(scope.$index, scope.row)"
+                  >编辑</el-button>
                   <el-popconfirm
                     confirm-button-text="确定"
                     cancel-button-text="取消"
@@ -75,7 +88,9 @@
                 </template>
               </el-table-column>
             </el-table>
-            <div style="margin: 5px"><el-button @click="handleAddRecord">+ 新增记录</el-button></div>
+            <div style="margin: 5px">
+              <el-button @click="handleAddRecord">+ 新增记录</el-button>
+            </div>
           </el-card>
         </div>
       </el-col>
@@ -89,7 +104,13 @@
               <span>活动管理</span>
               <el-divider></el-divider>
             </div>
-            <el-form ref="activityForm" style="text-align: left" :model="sizeForm" label-width="80px" size="mini">
+            <el-form
+              ref="activityForm"
+              style="text-align: left"
+              :model="sizeForm"
+              label-width="80px"
+              size="mini"
+            >
               <el-form-item label="活动名称">
                 <el-input v-model="sizeForm.name"></el-input>
               </el-form-item>
@@ -101,7 +122,12 @@
               </el-form-item>
               <el-form-item label="活动时间">
                 <el-col :span="11">
-                  <el-date-picker v-model="sizeForm.date1" type="date" placeholder="选择日期" style="width: 100%"></el-date-picker>
+                  <el-date-picker
+                    v-model="sizeForm.date1"
+                    type="date"
+                    placeholder="选择日期"
+                    style="width: 100%"
+                  ></el-date-picker>
                 </el-col>
                 <el-col class="line" :span="2">-</el-col>
                 <el-col :span="11">
@@ -127,15 +153,15 @@
               </el-form-item>
             </el-form>
           </el-card>
-        </div></el-col
-      >
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus/lib/components/message'
+import { ElMessage } from 'element-plus/lib/components'
 
 export default defineComponent({
   name: 'AdvanceForm',
@@ -264,37 +290,25 @@ export default defineComponent({
 </script>
 
 <style lang="stylus" scoped>
-.FormInfo{
-    margin-top:20px;
-    .demo-ruleForm{
-        text-align :left;
-    }
-    .info{
-        text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    }
-     .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
-  }
-
-  .box-card {
-    width:100%;
-  }
-
-   .el-row {
-       margin-bottom: 20px;
-     }
-}
+.FormInfo
+  margin-top 20px
+  .demo-ruleForm
+    text-align left
+  .info
+    text-align left
+    padding-left 20px
+    margin-bottom 20px
+    font-size 12px
+  .card-header
+    display flex
+    justify-content space-between
+    align-items center
+  .text
+    font-size 14px
+  .item
+    margin-bottom 18px
+  .box-card
+    width 100%
+  .el-row
+    margin-bottom 20px
 </style>

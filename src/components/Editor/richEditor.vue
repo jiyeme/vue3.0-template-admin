@@ -35,10 +35,10 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="stylus" scoped>
-.editor-container{
-      :deep .w-e-text-container{
-      text-align :left;
-    }
+<style lang="scss" scoped>
+.editor-container {
+  :deep .w-e-text-container {
+    text-align: left;
+  }
 }
 </style>
