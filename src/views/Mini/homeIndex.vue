@@ -21,7 +21,7 @@
         <h3>数据修改区域</h3>
         <br />
         <div style="display:flex;">
-          <AddNewItem @handle-slide-item="addSlideItem($event)" />
+          <EditNewItem @handle-slide-item="addSlideItem($event)" />
           <el-button @click="updateConfig">保存</el-button>
         </div>
         <draggable
@@ -48,7 +48,7 @@
                 <el-col :span="8" class="ele">{{element.path}}</el-col>
                 <el-col :span="8" class="ele">
                   <div style="display:flex;justify-content: center;">
-                    <AddNewItem
+                    <EditNewItem
                       :action-type="'edit'"
                       :edit-data="element"
                       @handle-slide-item="editSlideItem($event, index)"
@@ -77,12 +77,12 @@
 <script>
 import { defineComponent } from 'vue'
 import draggable from 'vuedraggable'
-import AddNewItem from './components/editSlideItem.vue'
+import EditNewItem from './components/editSlideItem.vue'
 import { getMiniIndexConfig, updateMiniIndexConfig } from './api'
 
 export default defineComponent({
   components: {
-    AddNewItem,
+    EditNewItem,
     draggable
   },
   data() {

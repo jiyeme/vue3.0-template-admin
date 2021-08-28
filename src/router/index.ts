@@ -33,6 +33,32 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/college',
+    component: layout,
+    redirect: '/college/manage',
+    meta: {
+      title:{
+        '/zh-CN': '学院管理',
+        '/en-US': 'College Manage'
+      },
+      icon: 'ic ic-home',
+    },
+    children: [
+      {
+        path: '/college/manage',
+        name: 'college',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/College/index.vue'),
+        meta: {
+          title:{
+            '/zh-CN': '学院管理',
+            '/en-US': 'College Manage'
+          },
+          icon: '',
+        },
+      },
+    ],
+  },
+  {
     path: '/login',
     name: '登录',
     component: () => import(/* webpackChunkName: "login" */ '@/views/Login/index.vue'),

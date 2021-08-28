@@ -12,11 +12,18 @@
           </div>
         </span>
       </template>
-      <el-transfer v-model="menu.form" v-loading="menu.loading" :data="menu.data" :titles="['菜单', '已授权']"> </el-transfer>
+      <el-transfer
+        v-model="menu.form"
+        v-loading="menu.loading"
+        :data="menu.data"
+        :titles="['菜单', '已授权']"
+      ></el-transfer>
     </el-card>
     <br />
     <el-row class="btns">
-      <el-button size="mini" type="primary" :disabled="role.state == 0" @click="saveData"> <i class="fa fa-check"> </i> 确认修改 </el-button>
+      <el-button size="mini" type="primary" :disabled="role.state == 0" @click="saveData">
+        <i class="fa fa-check"></i> 确认修改
+      </el-button>
     </el-row>
   </div>
 </template>
@@ -127,20 +134,13 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped>
-.btns {
-  text-align: right;
-}
-
-.el-transfer {
-  display: inline-block;
-  text-align: left;
-}
-
-.transfer {
-  text-align: center;
-}
-
-.card-header {
-  text-align: left;
-}
+.btns
+  text-align right
+.el-transfer
+  display inline-block
+  text-align left
+.transfer
+  text-align center
+.card-header
+  text-align left
 </style>

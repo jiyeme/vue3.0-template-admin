@@ -66,7 +66,7 @@
       </div>
     </el-card>
 
-    <el-dialog v-model="edit_visible" center :title="posted.role.roleName">
+    <el-dialog v-model="edit_visible" center :title="posted.role.roleName" width="70%">
       <role-edit :current-role="posted" @success="onEditSuccess"></role-edit>
     </el-dialog>
     <el-dialog v-model="add_visible" title="新增角色">
