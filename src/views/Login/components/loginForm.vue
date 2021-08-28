@@ -49,7 +49,7 @@
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="registerForm.email" autocomplete="off" placeholder="请输入注册邮箱">
           <template #append>
-            <el-button @click="handleGetCaptcha">获取验证码</el-button>
+            <el-button :disabled="sendingCode" @click="handleGetCaptcha">{{ codeText }}</el-button>
           </template>
         </el-input>
       </el-form-item>
@@ -120,7 +120,8 @@ export default defineComponent({
     const loginFormRef = ref()
     const registerRef = ref()
     const store = useStore()
-
+    const sendingCode = ref(false)
+    const codeText = ref('获取验证码')
     const state = reactive<stateType>({
       loginForm: {
         email: '',
@@ -169,6 +170,7 @@ export default defineComponent({
     }
 
     // methods
+
     /**
      * @description  用户登录接口
      *
@@ -235,12 +237,18 @@ export default defineComponent({
             }
             Service.postRegister(data)
               .then((res: any) => {
-                console.log(res)
-                ElMessage({
-                  type: 'success',
-                  message: '注册成功'
-                })
-                state.showLogin = true
+                if (res.status === 0) {
+                  ElMessage({
+                    type: 'success',
+                    message: '注册成功'
+                  })
+                  state.showLogin = true
+                } else {
+                  ElMessage({
+                    type: 'warning',
+                    message: res.message
+                  })
+                }
               })
               .catch((err) => {
                 ElMessage({
@@ -250,7 +258,7 @@ export default defineComponent({
               })
           } catch (err) {
             ElMessage({
-              type: 'success',
+              type: 'error',
               message: err.message
             })
           }
@@ -258,28 +266,55 @@ export default defineComponent({
       })
     }
     /**
+     * @description 获取验证码状态
+     */
+    const getCodeSucces = () => {
+      let countDown = 60
+      sendingCode.value = true
+      const interval = setInterval(() => {
+        if (countDown > 0) {
+          codeText.value = `已发送(${countDown}s)`
+          countDown -= 1
+        } else {
+          clearInterval(interval)
+          sendingCode.value = false
+          codeText.value = '获取验证码'
+        }
+      }, 1000)
+    }
+    /**
      * @description 获取验证码
      */
-    const handleGetCaptcha = async () => {
+    const handleGetCaptcha = async (): Promise<boolean> => {
       try {
         const { email } = state.registerForm
+        if (!email) {
+          ElMessage({
+            type: 'warning',
+            message: '请输入注册邮箱'
+          })
+          return false
+        }
         const data = {
           email
         }
         const res = await Service.postCaptcha(data)
         if (res.status === 0) {
           ElMessage({
-            type: 'warning',
-            message: res.message
-          })
-        } else {
-          ElMessage({
             type: 'success',
             message: res.message
           })
+          getCodeSucces()
+          return true
         }
+        ElMessage({
+          type: 'warning',
+          message: res.message
+        })
+        return false
       } catch (err) {
         console.error(err)
+        return false
       }
     }
     /**
@@ -292,6 +327,8 @@ export default defineComponent({
       ...toRefs(state),
       loginFormRef,
       registerRef,
+      sendingCode,
+      codeText,
       rules,
       submitForm,
       handleRegister,
