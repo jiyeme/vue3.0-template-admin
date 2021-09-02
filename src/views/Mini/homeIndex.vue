@@ -103,7 +103,7 @@ export default defineComponent({
   unmounted() {},
   methods: {
     addSlideItem(e) {
-      console.log('homeIndex.vue', e)
+      console.log('homeIndex.vue', e, this.slide)
       this.slide.push(e)
     },
     editSlideItem(e, index) {
@@ -116,7 +116,7 @@ export default defineComponent({
     loadConfig() {
       getMiniIndexConfig().then((res) => {
         console.log(res)
-        this.slide = res.data
+        this.slide = res.data || []
       })
     },
     updateConfig() {
