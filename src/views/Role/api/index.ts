@@ -1,30 +1,15 @@
-import request from '@/utils/request';
 
-const roleApi={
-  queryAuthedPermission:'/api/auth/permission/routes'
-}
+import request2 from '@/utils/axios';
 
-class Service{
-  /**
-   * @description POST 保存授权菜单权限
-  */
-  static postAuthPermission(data: any) {
-    return request({
-      url: roleApi.queryAuthedPermission,
-      method: 'POST',
-      json: true,
-      data
-    }).then((res) => {
-        console.log(res);
-      if (res.status === 0) {
-      return Promise.resolve(res)
-      }
-      return Promise.reject(res)
-    })
+export const getRoleList = ()=>request2.get("/auth/roles")
+export const deleteRoleItem = (roleId: any)=>request2.delete(`/auth/roles/${  roleId}`)
+export const postNewRole = (role: any)=>request2.post("/auth/roles", role)
+
+export const getMenuList = ()=>request2.get("/auth/menus")
+export const getRoleMenuList = (roleId: any)=>request2.get("/auth/roles/menus", {
+  params: {
+    role_id: roleId
   }
-
-
-}
-export default Service
-
+})
+export const patchRoleMenus = (data: any[])=>request2.patch("/auth/roles/menus", data)
 

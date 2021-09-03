@@ -8,11 +8,15 @@ Mock.setup({
 })
 
 // mock 一组角色数据；
-const genRoles = () => ({
-  status: 0,
-  data: ['super', 'admin', 'nomal'],
-  message: '成功'
-})
+// const genRoles = () => ({
+//   code: 200,
+//   data: [
+//     {id:1, name: '超级管理员', remark: '拥有删除和创建等操作的权限', state: 1 },
+//     {id:2, name: '管理员', remark: '拥有创建和权限分配的权限', state: 1 },
+//     {id:3, name: '游客', remark: '只拥有操作部分菜单的权限', state: 2 }
+//   ],
+//   msg: '成功'
+// })
 
 const getSwiperInfo = () => ({
   status: 0,
@@ -238,7 +242,7 @@ Mock.mock('/api/personal/tasks', 'get', () => ({
   },
   message: '更新成功'
 }))
-Mock.mock('/api/auth/roles', 'get', genRoles)
+// Mock.mock('/api/auth/roles', 'get', genRoles)
 Mock.mock('/api/home/swiperInfo', 'get', getSwiperInfo)
 
 Mock.mock('/api/media/list', 'get', {"code":200,"msg":null,"data":{"current":1,"totalPages":3,"list":[{"path":"/upload/2021/08/20210824220629997.jpg","id":1},{"path":"/upload/2021/08/20210825055716812.jpg","id":2},{"path":"/upload/2021/08/20210825070335950.jpg","id":3}]}})

@@ -55,7 +55,7 @@
                     />
                     <el-button
                       type="danger"
-                      icon="ic ic-delete"
+                      icon="el-icon-delete"
                       circle
                       @click="deleteSlideItem(index)"
                     ></el-button>
