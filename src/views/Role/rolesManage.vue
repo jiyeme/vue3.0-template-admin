@@ -160,17 +160,16 @@ export default defineComponent({
       fetchData()
     }
 
-    // 新增操作
+    // 点击新增操作
     const onCreate = () => {
       state.add_visible = true
     }
 
-    // 新增角色
+    // 提交新增角色数据
     const onCreateNewRole = (val: any) => {
-      console.log('新增值：', val)
+      state.add_visible = false
       const newRole = { name: val.roleName, remark: val.remark, state: 1 }
       postNewRole(newRole).then((res) => {
-        console.log(res)
         console.log(res)
         fetchData()
       })

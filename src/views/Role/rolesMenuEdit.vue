@@ -28,7 +28,7 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, onMounted, watchEffect, reactive, toRef, toRefs, onActivated } from 'vue'
+import { computed, defineComponent, onMounted, watchEffect, reactive, toRef, toRefs } from 'vue'
 import { useStore } from '@/store'
 import { getRoleMenuList, getMenuList, patchRoleMenus } from './api/index'
 
@@ -143,10 +143,7 @@ export default defineComponent({
     }
     onMounted(() => {
       // 获取 auth Menu Info
-      fetchMenuData()
-    })
-    onActivated(() => {
-      // 获取 auth Menu Info
+      console.log('onMounted')
       fetchMenuData()
     })
     // 使用watchEffect 监听所用到的变化时做出的副作用反应；

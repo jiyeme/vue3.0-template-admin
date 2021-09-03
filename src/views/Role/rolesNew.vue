@@ -8,7 +8,9 @@
         <el-input v-model="form.remark" placeholder="请输入备注"></el-input>
       </el-form-item>
       <el-row class="btn-container">
-        <el-button size="mini" type="primary" @click="submitForm()"> <i class="fa fa-plus"> </i> 新增 </el-button>
+        <el-button size="mini" type="primary" @click="submitForm()">
+          <i class="fa fa-plus"></i> 新增
+        </el-button>
       </el-row>
     </el-form>
   </div>
@@ -44,9 +46,12 @@ export default defineComponent({
       formRef.value.validate((valid: any): boolean => {
         if (valid) {
           emit('success', { ...state.form })
+          state.form = {
+            roleName: '',
+            remark: ''
+          }
           return true
         }
-        // eslint-disable-next-line no-console
         console.log('error submit!!')
         return false
       })

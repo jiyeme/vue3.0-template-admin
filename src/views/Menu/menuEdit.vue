@@ -1,12 +1,14 @@
 <template>
   <div v-loading="loading" class="new">
     <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="100px">
-      <el-form-item label="菜单名称" prop="meta.title">
-        <el-input v-model="form.meta.title" placeholder="请输入菜单名称"></el-input>
+      <el-form-item label="菜单名称" prop="name">
+        <el-input v-model="form.name" placeholder="请输入菜单名称"></el-input>
       </el-form-item>
-      <el-form-item label="菜单图标" prop="meta.icon">
-        <el-input v-model="form.meta.icon" placeholder="请选择菜单图标" style="width: 60%"> </el-input>
-        <el-button disabled="disabled"><i :class="form.meta.icon"></i></el-button>
+      <el-form-item label="菜单图标" prop="icon">
+        <el-input v-model="form.icon" placeholder="请选择菜单图标" style="width: 60%"></el-input>
+        <el-button disabled="disabled">
+          <i :class="form.icon"></i>
+        </el-button>
         <el-popover :visible="modal" placement="bottom" width="80vw" title="请选择图标">
           <icons @success="onSuccess"></icons>
           <template #reference>
@@ -18,7 +20,9 @@
         <el-input v-model="form.path" placeholder="请输入菜单路径"></el-input>
       </el-form-item>
       <el-row class="btn-container">
-        <el-button size="mini" type="primary" @click="submitForm()"> <i class="fa fa-plus"> </i> 确认修改 </el-button>
+        <el-button size="mini" type="primary" @click="submitForm()">
+          <i class="fa fa-plus"></i> 确认修改
+        </el-button>
       </el-row>
     </el-form>
   </div>
@@ -26,6 +30,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs, toRef } from 'vue'
 import Icons from '@/components/icon.vue'
+import { patchMenuItem } from './api'
 
 const Reg = /^(\/[a-zA-Z][0-9a-zA-Z]+)+$/
 
@@ -56,11 +61,11 @@ export default defineComponent({
     const currentMenu = toRef(props, 'currentMenu')
     console.log(currentMenu)
     const rules = {
-      'meta.title': [
+      name: [
         { required: true, message: '请输入菜单名称', trigger: 'blur' },
         { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
       ],
-      'meta.icon': [{ required: true, message: '请输入菜单图标', trigger: 'blur' }],
+      icon: [{ required: true, message: '请输入菜单图标', trigger: 'blur' }],
       path: [
         { required: true, message: '请输入菜单路径', trigger: 'blur' },
         { min: 2, message: '至少2个字符', trigger: 'blur' },
@@ -78,7 +83,7 @@ export default defineComponent({
     const onSuccess = (val: string) => {
       console.log('val is ', val)
       state.modal = false
-      state.form.meta.icon = val
+      state.form.icon = val
     }
     const handleClickChoose = () => {
       state.modal = !state.modal
@@ -90,8 +95,10 @@ export default defineComponent({
     const submitForm = () => {
       formRef.value.validate((valid: any): boolean => {
         if (valid) {
-          console.log(state.form)
-          emit('success', state.form)
+          // 提交修改后的数据
+          patchMenuItem(state.form).then((res) => {
+            if (res.data.result) emit('success', state.form)
+          })
           // 此处暂时省去异步接口处理
           return true
         }
