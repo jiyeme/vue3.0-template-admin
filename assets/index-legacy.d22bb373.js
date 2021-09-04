@@ -1,1 +1,0 @@
-!function(){var e=document.createElement("style");e.innerHTML="",document.head.appendChild(e),System.register(["./vendor-legacy.318a1985.js"],(function(e){"use strict";var n,t,r;return{setters:[function(e){n=e.g,t=e.e,r=e.f}],execute:function(){var u=e("default",{}),c=r("h2",null,"学院管理",-1);u.render=function(e,r,u,i,a,d){return n(),t("div",null,[c])}}}}))}();
