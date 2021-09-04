@@ -36,10 +36,10 @@
         </el-table-column>
       </el-table>
       <el-dialog v-model="edit_display" title="编辑学院信息">
-        <CollegeEdit :college-info="postCollege" @success="onEditSuccess"></CollegeEdit>
+        <TagEdit :college-info="postCollege" @success="onEditSuccess"></TagEdit>
       </el-dialog>
       <el-dialog v-model="add_display" title="添加学院信息">
-        <CollegeNew @success="onCreateSuccess"></CollegeNew>
+        <TagNew @success="onCreateSuccess"></TagNew>
       </el-dialog>
     </el-card>
   </div>
@@ -47,15 +47,15 @@
 
 <script>
 import { defineComponent, reactive, toRefs, watchEffect } from '@vue/runtime-core'
-import { ElMessage } from 'element-plus'
-import CollegeEdit from './collegeEdit.vue'
-import CollegeNew from './collegeNew.vue'
+import { ElMessage } from 'element-plus/lib/components/message'
+import TagEdit from './tagEdit.vue'
+import TagNew from './tagNew.vue'
 import { getCollegeList, deleteCollegeItem } from './api'
 
 export default defineComponent({
   components: {
-    CollegeEdit,
-    CollegeNew
+    TagEdit,
+    TagNew
   },
   setup() {
     const state = reactive({

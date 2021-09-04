@@ -35,6 +35,7 @@
           </template>
         </el-table-column>
       </el-table>
+      <!-- TODO:分页支持 -->
       <el-dialog v-model="edit_display" title="编辑学院信息">
         <CollegeEdit :college-info="postCollege" @success="onEditSuccess"></CollegeEdit>
       </el-dialog>
@@ -47,7 +48,7 @@
 
 <script>
 import { defineComponent, reactive, toRefs, watchEffect } from '@vue/runtime-core'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from 'element-plus/lib/components/message'
 import CollegeEdit from './collegeEdit.vue'
 import CollegeNew from './collegeNew.vue'
 import { getCollegeList, deleteCollegeItem } from './api'
